@@ -10,6 +10,14 @@ AWS.config.update({region: 'eu-west-1'});
 const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 var docClient = new AWS.DynamoDB.DocumentClient();
 
+const isMarketOpen = () => {
+  const now = new Date();
+  if(now.getDay()>5) return false
+  if(now.getHours()<8 || now.getHours() > 18) return false
+  return true;
+}
+
+
 module.exports.prices = async (event) => {
     const data = [];
     const funcs = [{f: () => fetchPageDataValentum(), ticker: 'Valentum'}, 
@@ -21,7 +29,7 @@ module.exports.prices = async (event) => {
           'ticker': {S: fetchData.ticker}
         }}).promise()
         const timestamp = parseInt(readingStock.Item.lastReading.N);
-        if(timestamp + MAX_ALLOWED_INTERVAL < Date.now()){
+        if(isMarketOpen() && timestamp + MAX_ALLOWED_INTERVAL < Date.now()){
           console.log('The reading has expired, a new reading will be query')
           const newValue = await fetchData.f();
           console.log('NEW', newValue);
@@ -45,17 +53,10 @@ module.exports.prices = async (event) => {
         }
     }
 
-    // const data = []//[await fetchSingleStock('KRI.AT')]
-    // //data.push(await fetchSingleStock('IWDA.AS'))
-
-    // data.push({ticker: "KRI.AT", price: 8.80}) //BORRAR
-    // data.push({ticker: "IWDA.AS", price: 71}) //BORRAR
-    // data.push({ticker: 'Valentum', price: await fetchPageDataValentum()});
-    // console.log(data)
-     return {
-         statusCode: 200,
-         body: JSON.stringify(data),
-     };
+    return {
+        statusCode: 200,
+        body: JSON.stringify(data),
+    };
 };
 
 async function fetchPageDataValentum(){
