@@ -4,7 +4,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 const RAPIDAPI_HOST = process.env.RAPIDAPI_HOST;
 const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
 
-export const fetchSingleStock: PriceHandler = async (stockTicker: string): Promise<StockCurrentPrice> => {
+export const fetchYahooSingleStock: PriceHandler = async (stockTicker: string): Promise<StockCurrentPrice> => {
     const options: AxiosRequestConfig = {
         method: 'GET',
         url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile',
