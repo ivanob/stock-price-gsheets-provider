@@ -8,7 +8,7 @@ export const fetchPageDataValentum: PriceHandler = async (): Promise<StockCurren
         const idx = content.indexOf("rnk-LiquidationValue_LastSessionValue")
         const priceRaw = content.substring(idx, idx+50)
         const price = priceRaw.substring(priceRaw.indexOf(">")+2, priceRaw.indexOf(" EUR"));
-        return ({price: parseFloat(price.replace(',','.')), stock: "Valentum"})
+        return ({price: parseFloat(price.replace(',','.')), stock: "Valentum", dailyChange: 0})
     }catch(error){
         throw new Error("Could not fetch the data about Valentum");
     }

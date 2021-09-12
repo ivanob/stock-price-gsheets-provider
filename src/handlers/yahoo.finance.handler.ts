@@ -19,7 +19,7 @@ export const fetchYahooSingleStock: PriceHandler = async (stockTicker: string): 
         if (res.statusCode < 200 || res.statusCode >= 300) {
             throw new Error('statusCode=' + res.statusCode);
         }
-        return ({stock: stockTicker, price: res.data.price.regularMarketPrice.raw});
+        return ({stock: stockTicker, price: res.data.price.regularMarketPrice.raw, dailyChange: res.data.price.regularMarketChange.raw});
     }catch(error){
         throw error;
     }

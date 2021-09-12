@@ -13,10 +13,10 @@ export const prices = async (event: any) => {
           const newValue: StockCurrentPrice = await fetchData.handler();
           console.log('NEW', newValue);
           await insertPriceDB(newValue);
-          data.push({ticker: fetchData.ticker, price: newValue.price})
+          data.push({ticker: fetchData.ticker, price: newValue.price, dailyChange: newValue.dailyChange})
         }else{
           console.log('READ', readingStock)
-          data.push({ticker: fetchData.ticker, price: readingStock.price})
+          data.push({ticker: fetchData.ticker, price: readingStock.price, dailyChange: readingStock.dailyChange})
         }
     }
     return {

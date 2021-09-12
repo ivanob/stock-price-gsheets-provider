@@ -19,12 +19,12 @@ export const queries: StockQuery[] = [
     {
         ticker: 'KRI.AT',
         periodicity: hoursToMiliseconds(6),
-        handler: fetchYahooSingleStock
+        handler: () => fetchYahooSingleStock('KRI.AT')
     },
     {
         ticker: 'IWDA.AS',
         periodicity: hoursToMiliseconds(6),
-        handler: fetchYahooSingleStock
+        handler: () => fetchYahooSingleStock('IWDA.AS')
     },
     {
         ticker: 'Valentum',
@@ -33,17 +33,17 @@ export const queries: StockQuery[] = [
     },
     {
         ticker: 'VUSA.AS',
-        periodicity: 1,
-        handler: fetchYahooSingleStock
+        periodicity: hoursToMiliseconds(6),
+        handler: () => fetchYahooSingleStock('VUSA.AS')
     },
     {
         ticker: 'EMIM.AS',
-        periodicity: 1,
-        handler: fetchYahooSingleStock
+        periodicity: hoursToMiliseconds(6),
+        handler: () => fetchYahooSingleStock('EMIM.AS')
     },
     {
         ticker: 'NQSE.DE',
-        periodicity: 1,
-        handler: fetchYahooSingleStock
+        periodicity: hoursToMiliseconds(6),
+        handler: () => fetchYahooSingleStock('NQSE.DE')
     }
 ]

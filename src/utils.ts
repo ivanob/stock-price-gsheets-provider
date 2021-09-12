@@ -1,7 +1,6 @@
 import * as AWS from 'aws-sdk';
-import { DocumentClient, UpdateItemInput } from 'aws-sdk/clients/dynamodb';
+import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import { StockCurrentPrice } from './handlers/types';
-import { StockQuery } from './stocks-config';
 
 AWS.config.update({region: 'eu-west-1'});
 const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
@@ -9,7 +8,8 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 
 export type RespDB = {
     timestamp: number,
-    price: number
+    price: number,
+    dailyChange: number
 }
 
 export const queryPriceDB = async (ticker: string): Promise<RespDB> => {
@@ -18,7 +18,8 @@ export const queryPriceDB = async (ticker: string): Promise<RespDB> => {
   }}).promise();
   return {
       timestamp: parseInt(readingStock.Item.lastReading.N),
-      price: parseInt(readingStock.Item.price.N)
+      price: parseFloat(readingStock.Item.price.N),
+      dailyChange: parseFloat(readingStock.Item.dailyChange.N)
   }
 }
 
@@ -28,10 +29,11 @@ export const insertPriceDB = async (data: StockCurrentPrice) => {
         Key:{
           "ticker": data.stock
         },
-        UpdateExpression: "set lastReading=:time, price=:price",
+        UpdateExpression: "set lastReading=:time, price=:price, dailyChange=:change",
         ExpressionAttributeValues:{
             ":time":Date.now(),
             ":price":data.price,
+            ":change":data.dailyChange
           },
         ReturnValues:"UPDATED_NEW"
       };
