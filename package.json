@@ -1,6 +1,24 @@
 {
+  "name": "stock-price-gsheets-provider",
+  "compile": "tsc",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "compile": "tsc",
+    "deploy": "npm run compile && serverless deploy",
+    "package": "rm -rf .serverless && serverless package"
+  },
   "dependencies": {
     "aws-sdk": "^2.959.0",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "glob": "^7.1.7"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.83",
+    "@types/node": "^13.13.5",
+    "serverless-plugin-include-dependencies": "^5.0.0",
+    "serverless-plugin-common-excludes": "^4.0.0",
+    "typescript": "^3.9.10"
   }
 }
