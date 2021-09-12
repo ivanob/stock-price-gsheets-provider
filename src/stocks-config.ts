@@ -30,5 +30,20 @@ export const queries: StockQuery[] = [
         ticker: 'Valentum',
         periodicity: 1,
         handler: fetchPageDataValentum
+    },
+    {
+        ticker: 'VUSA.AS',
+        periodicity: 1,
+        handler: fetchYahooSingleStock
+    },
+    {
+        ticker: 'EMIM.AS',
+        periodicity: 1,
+        handler: fetchYahooSingleStock
+    },
+    {
+        ticker: 'NQSE.DE',
+        periodicity: 1,
+        handler: fetchYahooSingleStock
     }
 ]

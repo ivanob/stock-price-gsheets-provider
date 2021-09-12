@@ -5,9 +5,17 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "test": "jest --verbose",
     "compile": "tsc",
     "deploy": "npm run compile && serverless deploy",
     "package": "rm -rf .serverless && serverless package"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/src/tests"
+    ]
   },
   "dependencies": {
     "aws-sdk": "^2.959.0",
@@ -19,6 +27,9 @@
     "@types/node": "^13.13.5",
     "serverless-plugin-include-dependencies": "^5.0.0",
     "serverless-plugin-common-excludes": "^4.0.0",
-    "typescript": "^3.9.10"
+    "typescript": "^3.9.10",
+    "jest": "^27.1.1",
+    "@types/jest": "^26.0.24",
+    "ts-jest": "^27.0.3"
   }
 }

@@ -1,19 +1,9 @@
 import { StockCurrentPrice } from "./handlers/types";
 import { queries, StockQuery } from "./stocks-config";
-import { insertPriceDB, queryPriceDB, RespDB } from "./utils";
-
-const isMarketOpen = () => {
-  const now = new Date();
-  if(now.getDay()>5) return false
-  if(now.getHours()<8 || now.getHours() > 18) return false
-  return true;
-}
+import { insertPriceDB, isMarketOpen, queryPriceDB, RespDB } from "./utils";
 
 export const prices = async (event: any) => {
     const data = [];
-    /*const funcs = [{f: () => fetchPageDataValentum(), ticker: 'Valentum'}, 
-    {f:() => fetchSingleStock("KRI.AT"), ticker: "KRI.AT"},
-    {f:() => fetchSingleStock("IWDA.AS"), ticker: "IWDA.AS"}]*/
     const funcs = queries;
     for(var i = 0; i < funcs.length; i++){
         const fetchData: StockQuery = funcs[i];

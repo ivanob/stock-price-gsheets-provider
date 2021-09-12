@@ -37,3 +37,10 @@ export const insertPriceDB = async (data: StockCurrentPrice) => {
       };
     return await docClient.update(params).promise();
 }
+
+export const isMarketOpen = () => {
+    const now = new Date();
+    if(now.getDay()>5) return false
+    if(now.getHours()<8 || now.getHours() > 18) return false
+    return true;
+}
