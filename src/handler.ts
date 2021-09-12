@@ -1,9 +1,7 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as AWS from 'aws-sdk';
+import { fetchPageDataValentum } from './handlers/custom.handlers';
+import { fetchSingleStock } from './handlers/yahoo.finance.handler';
 const MAX_ALLOWED_INTERVAL = 6 * 60 * 60 * 1000; //Interval each 6h
-
-const RAPIDAPI_HOST = process.env.RAPIDAPI_HOST;
-const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
 
 AWS.config.update({region: 'eu-west-1'});
 const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
@@ -15,7 +13,6 @@ const isMarketOpen = () => {
   if(now.getHours()<8 || now.getHours() > 18) return false
   return true;
 }
-
 
 export const prices = async (event: any) => {
     const data = [];
@@ -51,51 +48,8 @@ export const prices = async (event: any) => {
           data.push({ticker: fetchData.ticker, price: readingStock.Item.price.N})
         }
     }
-
     return {
         statusCode: 200,
         body: JSON.stringify(data),
     };
 };
-
-async function fetchPageDataValentum(){
-  return new Promise((resolve, reject) => {
-    const req = axios.get('https://www.rankia.com/fondos-de-inversion/valentum-valentum-am')
-    .then(function(res){
-      const content = res.data
-      const idx = content.indexOf("rnk-LiquidationValue_LastSessionValue")
-      const priceRaw = content.substring(idx, idx+50)
-      const price = priceRaw.substring(priceRaw.indexOf(">")+2, priceRaw.indexOf(" EUR"));
-      resolve({price: parseFloat(price.replace(',','.')), stock: "Valentum"})
-    })
-  })
-}
-
-type FetchResp = {
-  stock: string,
-  price: number
-}
-
-async function fetchSingleStock(stockTicker: string): Promise<FetchResp> {
-     return new Promise((resolve, reject) => {
-        const options: AxiosRequestConfig = {
-          method: 'GET',
-          url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile',
-          params: {symbol: stockTicker, region: 'US'},
-          headers: {
-            'x-rapidapi-key': RAPIDAPI_KEY,
-            'x-rapidapi-host': RAPIDAPI_HOST
-          }
-        }
-        const req = axios.request(options)
-          .then(function(res: any){
-            if (res.statusCode < 200 || res.statusCode >= 300) {
-                  return reject(new Error('statusCode=' + res.statusCode));
-            }
-            return resolve({stock: stockTicker, price: res.data.price.regularMarketPrice.raw})  
-        })
-        .catch(function(error){
-          console.log(error);
-        })
-    });
-}
