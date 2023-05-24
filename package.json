@@ -3,12 +3,11 @@
   "compile": "tsc",
   "version": "0.1.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "jest --verbose",
     "compile": "tsc",
-    "deploy": "npm run compile && serverless deploy",
-    "package": "rm -rf .serverless && serverless package"
+    "build": "esbuild ./src/handler.ts --bundle --platform=node --target=es2020 --outfile=dist/handler.js"
   },
   "jest": {
     "preset": "ts-jest",
@@ -23,13 +22,12 @@
     "glob": "^7.1.7"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.83",
-    "@types/node": "^13.13.5",
-    "serverless-plugin-include-dependencies": "^5.0.0",
-    "serverless-plugin-common-excludes": "^4.0.0",
-    "typescript": "^3.9.10",
-    "jest": "^27.1.1",
-    "@types/jest": "^26.0.24",
-    "ts-jest": "^27.0.3"
+    "@types/aws-lambda": "^8.10.111",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.0.5",
+    "ts-loader": "^9.4.2",
+    "esbuild": "^0.17.11"
   }
 }

@@ -13,7 +13,8 @@ export type RespDB = {
 }
 
 export const queryPriceDB = async (ticker: string): Promise<RespDB> => {
-   const readingStock = await ddb.getItem({TableName: 'historicalPrices', Key: {
+  //TODO: fix this, can not have the table hardcoded
+   const readingStock = await ddb.getItem({TableName: 'historical-prices', Key: {
     'ticker': {S: ticker}
   }}).promise();
   return {
@@ -25,7 +26,7 @@ export const queryPriceDB = async (ticker: string): Promise<RespDB> => {
 
 export const insertPriceDB = async (data: StockCurrentPrice) => {
     const params: DocumentClient.UpdateItemInput = {
-        TableName:'historicalPrices',
+        TableName:'historical-prices',
         Key:{
           "ticker": data.stock
         },

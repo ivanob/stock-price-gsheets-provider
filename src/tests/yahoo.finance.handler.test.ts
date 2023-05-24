@@ -1,5 +1,5 @@
-import {fetchYahooSingleStock} from '../handlers/yahoo.finance.handler'
-import {StockCurrentPrice} from '../handlers/types'
+import {fetchYahooSingleStock} from '../src/handlers/yahoo.finance.handler'
+import {StockCurrentPrice} from '../src/handlers/types'
 
 beforeEach(() => {
   jest.clearAllMocks();
