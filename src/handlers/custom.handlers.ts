@@ -19,13 +19,13 @@ export const fetchPageDataValentum: PriceHandler =
           .find("span.gc-CotizationCard_LastSessionValue")
           .text();
         if (price && result.price === -1) {
-          result.price = parseFloat(price.split(" ")[0]);
+          result.price = parseFloat(price.split(" ")[0].replace(",", "."));
         }
         const dailyChange = $(element)
           .find("span.gc-CotizationCard_Evolution-positive")
           .text();
         if (dailyChange && result.dailyChange === -999) {
-          result.dailyChange = parseFloat(dailyChange.split("%")[0]);
+          result.dailyChange = parseFloat(dailyChange.split("%")[0].replace(",", "."));
         }
       });
       return result;

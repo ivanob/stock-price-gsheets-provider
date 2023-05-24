@@ -1,5 +1,5 @@
 function atOpen(e) {
-  var response = UrlFetchApp.fetch("https://2zbeifwf58.execute-api.eu-west-1.amazonaws.com/stock-price-gsheets-provider-dev-prices");
+  var response = UrlFetchApp.fetch("https://5885jcf9zc.execute-api.eu-west-1.amazonaws.com/prod/prices");
   const pricesData = JSON.parse(response.getContentText())
   // console.log(pricesData);
   var sheet = SpreadsheetApp.getActiveSheet();
