@@ -16,34 +16,34 @@ export type StockQuery = {
 }
 
 export const queries: StockQuery[] = [
-    {
-        ticker: 'KRI.AT',
-        periodicity: hoursToMiliseconds(6),
-        handler: () => fetchYahooSingleStock('KRI.AT')
-    },
-    {
-        ticker: 'IWDA.AS',
-        periodicity: hoursToMiliseconds(6),
-        handler: () => fetchYahooSingleStock('IWDA.AS')
-    },
+    // {
+    //     ticker: 'KRI.AT',
+    //     periodicity: hoursToMiliseconds(6),
+    //     handler: () => fetchYahooSingleStock('KRI.AT')
+    // },
+    // {
+    //     ticker: 'IWDA.AS',
+    //     periodicity: hoursToMiliseconds(6),
+    //     handler: () => fetchYahooSingleStock('IWDA.AS')
+    // },
     {
         ticker: 'Valentum',
         periodicity: 1,
         handler: fetchPageDataValentum
     },
-    {
-        ticker: 'VUSA.AS',
-        periodicity: hoursToMiliseconds(6),
-        handler: () => fetchYahooSingleStock('VUSA.AS')
-    },
-    {
-        ticker: 'EMIM.AS',
-        periodicity: hoursToMiliseconds(6),
-        handler: () => fetchYahooSingleStock('EMIM.AS')
-    },
-    {
-        ticker: 'NQSE.DE',
-        periodicity: hoursToMiliseconds(6),
-        handler: () => fetchYahooSingleStock('NQSE.DE')
-    }
+    // {
+    //     ticker: 'VUSA.AS',
+    //     periodicity: hoursToMiliseconds(6),
+    //     handler: () => fetchYahooSingleStock('VUSA.AS')
+    // },
+    // {
+    //     ticker: 'EMIM.AS',
+    //     periodicity: hoursToMiliseconds(6),
+    //     handler: () => fetchYahooSingleStock('EMIM.AS')
+    // },
+    // {
+    //     ticker: 'NQSE.DE',
+    //     periodicity: hoursToMiliseconds(6),
+    //     handler: () => fetchYahooSingleStock('NQSE.DE')
+    // }
 ]
