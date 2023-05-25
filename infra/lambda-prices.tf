@@ -62,7 +62,7 @@ data "aws_iam_policy_document" "inline_policy" {
       "dynamodb:UpdateTable",
     ]
 
-    resources = [aws_dynamodb_table.historical-prices.arn]
+    resources = [aws_dynamodb_table.config-users-prices.arn]
 
     effect = "Allow"
   }
