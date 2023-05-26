@@ -1,8 +1,8 @@
 import axios from "axios";
-import { PriceHandler, StockCurrentPrice } from "./types";
+import { SinglePriceHandler, StockCurrentPrice } from "./types";
 import * as cheerio from "cheerio";
 
-export const fetchPageDataValentum: PriceHandler =
+export const fetchPageDataValentum: SinglePriceHandler =
   async (): Promise<StockCurrentPrice> => {
     try {
       const res = await axios.get(

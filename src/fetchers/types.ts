@@ -16,4 +16,5 @@ export type StockConfig = {
     type: string
 }
 
-export type PriceHandler = (stockTicker?: string) => Promise<StockCurrentPrice>
+export type SinglePriceHandler = (stockTicker?: string) => Promise<StockCurrentPrice>
+export type MultiPriceHandler = (stockTicker?: string[]) => Promise<StockCurrentPrice[]>

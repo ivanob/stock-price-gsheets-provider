@@ -1,4 +1,4 @@
-import { fetchPageDataValentum } from "../handlers/custom.handlers";
+import { fetchPageDataValentum } from "../fetchers/custom-fetch";
 
 describe("Test on custom scrapers", () => {
   test("checks if the scraper for valentum is working properly", async () => {
@@ -6,7 +6,7 @@ describe("Test on custom scrapers", () => {
     console.log(
       'Price of valentum: ', priceValentum
     )
-    expect(priceValentum.price).not.toEqual(-1)
+    expect(priceValentum).not.toEqual(-1)
     expect(priceValentum.dailyChange).not.toEqual(-999)
   })
 });

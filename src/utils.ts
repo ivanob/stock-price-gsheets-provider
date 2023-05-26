@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
-import { ConfigUser, StockConfig, StockCurrentPrice } from './handlers/types';
+import { ConfigUser, StockConfig, StockCurrentPrice } from './fetchers/types';
 
 AWS.config.update({region: 'eu-west-1'});
 const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
@@ -37,7 +37,7 @@ export const queryPriceDB = async (ticker: string): Promise<RespDB> => {
 export const queryUserConfig = async (user: string): Promise<ConfigUser> => {
   //TODO: fix this, can not have the table hardcoded
    const readingConfig = await ddb.getItem({TableName: 'config-users-prices', Key: {
-    'id': {S: user}
+    'id': {S: '1'}
   }}).promise();
   // console.log(.at(0).M.ticker.S)
   const wallet: StockConfig[] = readingConfig.Item.wallet.L.map(x => ({
