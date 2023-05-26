@@ -1,15 +1,11 @@
-// import {fetchYahooSingleStock} from '../src/handlers/yahoo.finance.handler'
-// import {StockCurrentPrice} from '../src/handlers/types'
+import { fetchYahooMultipleStock } from "../fetchers/yahoo-finance-fetch";
 
-// beforeEach(() => {
-//   jest.clearAllMocks();
-// });
-
-// describe('Event handlers', () => {
-//   describe('#yahoo.finance.handler', () => {
-//     it('It should save the event in DB', async () => {
-//       const handler: StockCurrentPrice = await fetchYahooSingleStock('EMIM.AS');
-//       console.log(handler)
-//     });
-//   });
-// });
+describe("Test on yahoo fetcher", () => {
+  test("checks if the yahoo fetcher is working properly", async () => {
+    const stocks = await fetchYahooMultipleStock(["AAPL", "NFLX"]);
+    expect(stocks[0].price).not.toBe(0)
+    expect(stocks[1].price).not.toBe(0)
+    expect(stocks[0].dailyChange).not.toBe(0)
+    expect(stocks[1].dailyChange).not.toBe(0)
+  });
+});

@@ -1,16 +1,11 @@
 import { ConfigUser, StockConfig, StockCurrentPrice } from "./fetchers/types";
 import { fetchYahooMultipleStock } from "./fetchers/yahoo-finance-fetch";
 import {
-  insertPriceDB,
-  isMarketOpen,
-  queryPriceDB,
   queryUserConfig,
-  RespDB,
-  RespUserConfig,
 } from "./utils";
 
 export const prices = async (event: any) => {
-  const wallet: StockConfig[] = (await queryUserConfig("11111")).wallet;
+  const wallet: StockConfig[] = (await queryUserConfig("11111")).wallet.sort((a,b) => {return a.type === 'stock' ? -1 : 1});
   const tickers = wallet.map((stock: StockConfig) => stock.ticker);
   return fetchYahooMultipleStock(tickers)
     .then((data) => {

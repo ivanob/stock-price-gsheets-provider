@@ -9,7 +9,6 @@ export const fetchYahooMultipleStock: MultiPriceHandler = async (
   stockTicker: string[]
 ): Promise<StockCurrentPrice[]> => {
   return new Promise(async (resolve, reject) => {
-    console.log(stockTicker);
     const resp: QuoteResponseArray = await yahooFinance.quote(stockTicker);
     if (!resp) {
       reject("Ticker not found in Yahoo finance");
