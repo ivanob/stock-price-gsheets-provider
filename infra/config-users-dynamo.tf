@@ -83,6 +83,27 @@ resource "aws_dynamodb_table_item" "item1_config_user" {
           "type": {"S": "stock"},
           "fetcher": {"S": "financial.times"}
          }
+         },
+         {"M": {
+          "ticker": {"S": "ETX:WSE"},
+          "description": {"S": "Euro-tax"},
+          "type": {"S": "stock"},
+          "fetcher": {"S": "financial.times"}
+         }
+         },
+         {"M": {
+          "ticker": {"S": "NZK:ASX"},
+          "description": {"S": "New Zealand King salmnon"},
+          "type": {"S": "stock"},
+          "fetcher": {"S": "financial.times"}
+         }
+         },
+         {"M": {
+          "ticker": {"S": "KARE:ATH"},
+          "description": {"S": "Karelia Tobacco"},
+          "type": {"S": "stock"},
+          "fetcher": {"S": "financial.times"}
+         }
          }
       ]
     }
