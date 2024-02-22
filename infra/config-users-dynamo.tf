@@ -24,43 +24,64 @@ resource "aws_dynamodb_table_item" "item1_config_user" {
          {"M": {
           "ticker": {"S": "0P000125T9.F"},
           "description": {"S": "Valentum FI"},
-          "type": {"S": "Investment fund"}
+          "type": {"S": "Investment fund"},
+          "fetcher": {"S": "yahoo.finance"}
          }
          },
          {"M": {
           "ticker": {"S": "KRI.AT"},
           "description": {"S": "KriKri Milk"},
-          "type": {"S": "stock"}
+          "type": {"S": "stock"},
+          "fetcher": {"S": "yahoo.finance"}
          }
          },
          {"M": {
           "ticker": {"S": "IWDA.AS"},
           "description": {"S": "iShares Core MSCI World UCITS ETF USD (Acc)"},
-          "type": {"S": "ETF"}
+          "type": {"S": "ETF"},
+          "fetcher": {"S": "yahoo.finance"}
          }
          },
          {"M": {
           "ticker": {"S": "VUSA.AS"},
           "description": {"S": "Vanguard S&P 500 UCITS ETF (VUSA.AS)"},
-          "type": {"S": "ETF"}
+          "type": {"S": "ETF"},
+          "fetcher": {"S": "yahoo.finance"}
          }
          },
          {"M": {
           "ticker": {"S": "EMIM.AS"},
           "description": {"S": "iShares Core MSCI EM IMI UCITS ETF (EMIM.AS)"},
-          "type": {"S": "ETF"}
+          "type": {"S": "ETF"},
+          "fetcher": {"S": "yahoo.finance"}
          }
          },
          {"M": {
           "ticker": {"S": "NQSE.DE"},
           "description": {"S": "iShares VII PLC - iShares NASDAQ 100 UCITS ETF (NQSE.DE)"},
-          "type": {"S": "ETF"}
+          "type": {"S": "ETF"},
+          "fetcher": {"S": "yahoo.finance"}
          }
          },
           {"M": {
           "ticker": {"S": "0P0001NSL4.F"},
           "description": {"S": "True Value Compounders B FI (0P0001NSL4.F)"},
-          "type": {"S": "Investment fund"}
+          "type": {"S": "Investment fund"},
+          "fetcher": {"S": "yahoo.finance"}
+         }
+         },
+          {"M": {
+          "ticker": {"S": "4MS:WSE"},
+          "description": {"S": "4Mass"},
+          "type": {"S": "stock"},
+          "fetcher": {"S": "financial.times"}
+         }
+         },
+         {"M": {
+          "ticker": {"S": "KTILA:ATH"},
+          "description": {"S": "Kostas Lazaridis"},
+          "type": {"S": "stock"},
+          "fetcher": {"S": "financial.times"}
          }
          }
       ]

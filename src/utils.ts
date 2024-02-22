@@ -43,7 +43,8 @@ export const queryUserConfig = async (user: string): Promise<ConfigUser> => {
   const wallet: StockConfig[] = readingConfig.Item.wallet.L.map(x => ({
     ticker: x.M.ticker.S,
     type: x.M.type.S,
-    description: x.M.description.S
+    description: x.M.description.S,
+    fetcher: x.M.fetcher.S
   }))
   return {
       user: readingConfig.Item.user.S,

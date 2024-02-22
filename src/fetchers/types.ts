@@ -14,6 +14,7 @@ export type StockConfig = {
     ticker: string,
     description: string,
     type: string
+    fetcher: string
 }
 
 export type SinglePriceHandler = (stockTicker?: string) => Promise<StockCurrentPrice>
