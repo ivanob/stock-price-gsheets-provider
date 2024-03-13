@@ -81,7 +81,7 @@ export const stocksFromFinancialTimes = [
         fetcher: 'financial.times'
     },
     {
-        ticker: 'KRI.AT',
+        ticker: 'KRI.ATH',
         description: 'KriKri Milk',
         type: 'stock',
         fetcher: 'financial.times'
@@ -116,4 +116,19 @@ export const stocksFromFinancialTimes = [
         type: 'stock',
         fetcher: 'financial.times'
     },
+    {
+        ticker: 'GMV:WSE',
+        description: 'Gamivo SA',
+        type: 'stock',
+        fetcher: 'financial.times'
+    },
+]
+
+export const userStockKri = [
+    {
+        ticker: 'KRI.ATH',
+        description: 'KriKri Milk',
+        type: 'stock',
+        fetcher: 'financial.times'
+    }
 ]

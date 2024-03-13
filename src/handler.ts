@@ -7,12 +7,12 @@ import {
 
 export const prices = async (event: any) => {
   const wallet: StockConfig[] = await loadUserStocks('11111');
-  const walletYahoo = wallet.filter(stock => stock.fetcher==='yahoo.finance')
-  const tickers = walletYahoo.map((stock: StockConfig) => stock.ticker);
+  // const walletYahoo = wallet.filter(stock => stock.fetcher==='yahoo.finance')
+  // const tickers = walletYahoo.map((stock: StockConfig) => stock.ticker);
   let dataFromYahoo = Promise.resolve([])
-  if(walletYahoo.length > 0){
-    dataFromYahoo = fetchYahooMultipleStock(tickers)
-  }
+  // if(walletYahoo.length > 0){
+  //   dataFromYahoo = fetchYahooMultipleStock(tickers)
+  // }
   const walletFinancialTimes = wallet.filter(stock => stock.fetcher==='financial.times')
   const dataFromFinancialTimes = walletFinancialTimes.map(stock => fetchFinancialTimesStock(stock.ticker))
   const res = await Promise.allSettled([dataFromYahoo, ...dataFromFinancialTimes])

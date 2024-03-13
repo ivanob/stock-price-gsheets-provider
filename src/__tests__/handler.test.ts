@@ -1,6 +1,6 @@
 import { prices } from "../handler";
 import { loadUserStocks } from "../utils";
-import { stocksFromFinancialTimes, stocksFromYahooFinance } from "./mocks";
+import { stocksFromFinancialTimes, stocksFromYahooFinance, userStockKri } from "./mocks";
 
 jest.mock('../utils');
 const mockedLoadUserStocks = jest.mocked(loadUserStocks);
@@ -18,5 +18,11 @@ describe("Test on the main handler", () => {
         const result = await prices(null)
         console.log(result)
       });
+
+    test("checks if the main handler works with KRI.ATH", async () => {
+        mockedLoadUserStocks.mockReturnValue(Promise.resolve(userStockKri))
+        const result = await prices(null)
+        console.log(result)
+    });
   });
   

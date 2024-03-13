@@ -43,7 +43,6 @@ export const queryUserConfig = async (user: string): Promise<ConfigUser> => {
    const readingConfig = await ddb.getItem({TableName: 'config-users-prices', Key: {
     'id': {S: '1'}
   }}).promise();
-  // console.log(.at(0).M.ticker.S)
   const wallet: StockConfig[] = readingConfig.Item.wallet.L.map(x => ({
     ticker: x.M.ticker.S,
     type: x.M.type.S,

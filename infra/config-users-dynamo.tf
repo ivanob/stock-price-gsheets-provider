@@ -29,7 +29,7 @@ resource "aws_dynamodb_table_item" "item1_config_user" {
          }
          },
          {"M": {
-          "ticker": {"S": "KRI.AT"},
+          "ticker": {"S": "KRI.ATH"},
           "description": {"S": "KriKri Milk"},
           "type": {"S": "stock"},
           "fetcher": {"S": "financial.times"}
