@@ -22,52 +22,52 @@ resource "aws_dynamodb_table_item" "item1_config_user" {
     "wallet": {
       "L": [
          {"M": {
-          "ticker": {"S": "0P000125T9.F"},
+          "ticker": {"S": "ES0182769002:EUR"},
           "description": {"S": "Valentum FI"},
           "type": {"S": "Investment fund"},
-          "fetcher": {"S": "yahoo.finance"}
+          "fetcher": {"S": "financial.times"}
          }
          },
          {"M": {
           "ticker": {"S": "KRI.AT"},
           "description": {"S": "KriKri Milk"},
           "type": {"S": "stock"},
-          "fetcher": {"S": "yahoo.finance"}
+          "fetcher": {"S": "financial.times"}
          }
          },
          {"M": {
-          "ticker": {"S": "IWDA.AS"},
+          "ticker": {"S": "IWDA:AEX:EUR"},
           "description": {"S": "iShares Core MSCI World UCITS ETF USD (Acc)"},
           "type": {"S": "ETF"},
-          "fetcher": {"S": "yahoo.finance"}
+          "fetcher": {"S": "financial.times"}
          }
          },
          {"M": {
-          "ticker": {"S": "VUSA.AS"},
+          "ticker": {"S": "VUSA:AEX:EUR"},
           "description": {"S": "Vanguard S&P 500 UCITS ETF (VUSA.AS)"},
           "type": {"S": "ETF"},
-          "fetcher": {"S": "yahoo.finance"}
+          "fetcher": {"S": "financial.times"}
          }
          },
          {"M": {
-          "ticker": {"S": "EMIM.AS"},
+          "ticker": {"S": "EMIM:AEX:EUR"},
           "description": {"S": "iShares Core MSCI EM IMI UCITS ETF (EMIM.AS)"},
           "type": {"S": "ETF"},
-          "fetcher": {"S": "yahoo.finance"}
+          "fetcher": {"S": "financial.times"}
          }
          },
          {"M": {
-          "ticker": {"S": "NQSE.DE"},
+          "ticker": {"S": "NQSE:GER:EUR"},
           "description": {"S": "iShares VII PLC - iShares NASDAQ 100 UCITS ETF (NQSE.DE)"},
           "type": {"S": "ETF"},
-          "fetcher": {"S": "yahoo.finance"}
+          "fetcher": {"S": "financial.times"}
          }
          },
           {"M": {
-          "ticker": {"S": "0P0001NSL4.F"},
+          "ticker": {"S": "ES0180783013:EUR"},
           "description": {"S": "True Value Compounders B FI (0P0001NSL4.F)"},
           "type": {"S": "Investment fund"},
-          "fetcher": {"S": "yahoo.finance"}
+          "fetcher": {"S": "financial.times"}
          }
          },
           {"M": {

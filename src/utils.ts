@@ -34,6 +34,10 @@ export const queryPriceDB = async (ticker: string): Promise<RespDB> => {
   }
 }
 
+export const loadUserStocks = async (user: string): Promise<StockConfig[]> => {
+  return (await queryUserConfig("11111")).wallet.sort((a,b) => {return a.type === 'stock' ? -1 : 1});
+}
+
 export const queryUserConfig = async (user: string): Promise<ConfigUser> => {
   //TODO: fix this, can not have the table hardcoded
    const readingConfig = await ddb.getItem({TableName: 'config-users-prices', Key: {
