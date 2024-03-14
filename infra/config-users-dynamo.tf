@@ -29,7 +29,7 @@ resource "aws_dynamodb_table_item" "item1_config_user" {
          }
          },
          {"M": {
-          "ticker": {"S": "KRI.ATH"},
+          "ticker": {"S": "KRI:ATH"},
           "description": {"S": "KriKri Milk"},
           "type": {"S": "stock"},
           "fetcher": {"S": "financial.times"}
@@ -101,6 +101,20 @@ resource "aws_dynamodb_table_item" "item1_config_user" {
          {"M": {
           "ticker": {"S": "KARE:ATH"},
           "description": {"S": "Karelia Tobacco"},
+          "type": {"S": "stock"},
+          "fetcher": {"S": "financial.times"}
+         }
+         },
+         {"M": {
+          "ticker": {"S": "GMV:WSE"},
+          "description": {"S": "Gamivo SA"},
+          "type": {"S": "stock"},
+          "fetcher": {"S": "financial.times"}
+         }
+         },
+         {"M": {
+          "ticker": {"S": "ATP:ASX"},
+          "description": {"S": "Atlas Pearls"},
           "type": {"S": "stock"},
           "fetcher": {"S": "financial.times"}
          }
